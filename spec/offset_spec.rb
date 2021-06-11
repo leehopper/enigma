@@ -14,6 +14,12 @@ describe Offset do
     expect(offset.date).to eq('061121')
   end
 
+  it '.translate_date' do
+    offset = Offset.new('061121')
+
+    expect(offset.translate_date).to eq("3735776641")
+  end
+
   it '.create_shift_offset' do
     offset = Offset.new('061121')
 
