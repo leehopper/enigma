@@ -15,11 +15,11 @@ describe Offset do
   end
 
   it '.generate_date?' do
-    allow(Date).to receive(:today).and_return(Date.new(2021,6,11))
+    allow(Date).to receive(:today).and_return(Date.new(2021,6,5))
     no_date_offset = Offset.new('none')
 
     expect(no_date_offset).to be_a(Offset)
-    expect(no_date_offset.date).to eq('110621')
+    expect(no_date_offset.date).to eq('050621')
   end
 
   it '.translate_date' do
