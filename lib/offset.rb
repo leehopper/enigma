@@ -3,10 +3,10 @@ class Offset
 
   def initialize(date)
     @date = date
-    generate_date?
+    generate_date
   end
 
-  def generate_date?
+  def generate_date
     if @date == 'none'
       @date = (Date::today).strftime('%d%m%y')
     end
