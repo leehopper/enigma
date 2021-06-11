@@ -2,13 +2,16 @@ class Key
   attr_reader :key
 
   def initialize(key)
-    @key = key
-    generate_key
+    @key = generate_key(key)
   end
 
-  def generate_key
-    if @key == 'none'
-      @key = rand(0..99999).to_s
+  def generate_key(key)
+    if key == 'none'
+      5.times.map do
+        rand(10)
+      end.join
+    else
+      key
     end
   end
 
