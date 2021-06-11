@@ -14,7 +14,7 @@ describe Offset do
     expect(offset.date).to eq('110621')
   end
 
-  it '.generate_date?' do
+  it '.date_check' do
     allow(Date).to receive(:today).and_return(Date.new(2021,6,5))
     no_date_offset = Offset.new('none')
 
