@@ -10,11 +10,11 @@ describe Key do
   end
 
   it '.generate_key' do
-    allow_any_instance_of(Key).to receive(:rand).and_return(56789)
+    allow_any_instance_of(Key).to receive(:rand).and_return(1)
     rand_key = Key.new('none')
 
     expect(rand_key).to be_a(Key)
-    expect(rand_key.key).to eq('56789')
+    expect(rand_key.key).to eq('11111')
   end
 
   it 'creates shift key' do
