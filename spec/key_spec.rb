@@ -6,6 +6,7 @@ describe Key do
     key = Key.new('01234')
 
     expect(key).to be_a(Key)
+    expect(key.key).to eq('01234')
   end
 
   it 'creates instance of itself with random key' do
