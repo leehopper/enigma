@@ -1,5 +1,5 @@
 class Key
-  attr_reader :key 
+  attr_reader :key
 
   def initialize(key)
     @key = key
@@ -14,6 +14,12 @@ class Key
     4.times do |acc|
       output << @key[acc] + @key[acc + 1]
     end
-    output
+    convert_to_integars(output)
+  end
+
+  def convert_to_integars(shift_key)
+    shift_key.map do |key|
+      key.to_i
+    end
   end
 end
