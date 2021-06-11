@@ -2,11 +2,22 @@ require_relative '../lib/key'
 require 'rspec'
 
 describe Key do
-  before (:each) do
-    @key = Key.new(01234)
+  it 'exists with given key' do
+    key = Key.new('01234')
+
+    expect(key).to be_a(Key)
   end
 
-  it 'exists' do
-    expect(@key).to be_a(Key)
+  it 'creates instance of itself with random key' do
+    rand_key = Key.unknown
+
+    expect(rand_key).to be_a(Key)
   end
+
+  it 'creates shift key' do
+    known_key = Key.new('01234')
+
+    expect(known_key.create_shift_key).to eq(['01', '12', '23', '34'])
+  end
+
 end
