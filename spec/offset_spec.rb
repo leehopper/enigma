@@ -15,9 +15,9 @@ describe Offset do
   end
 
   it 'creates instance of self without date argument' do
-    offset = Offset.unknown
+    no_date_offset = Offset.unknown
 
-    expect(offset).to be_a(Offset)
+    expect(no_date_offset).to be_a(Offset)
   end
 
   it '.translate_date' do
@@ -29,6 +29,13 @@ describe Offset do
   it '.create_shift_offset' do
     offset = Offset.new('110621')
 
-    expect(offset.create_shift_offset).to eq(['5', '6', '4', '1'])
+    expect(offset.create_shift_offset).to eq([5, 6, 4, 1])
+  end
+
+  it '.convert_to_integers' do
+    offset = Offset.new('110621')
+    expected = offset.convert_to_integers(['5', '6', '4', '1'])
+
+    expect(expected).to eq([5, 6, 4, 1])
   end
 end
