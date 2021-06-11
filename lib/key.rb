@@ -3,10 +3,13 @@ class Key
 
   def initialize(key)
     @key = key
+    generate_key
   end
 
-  def self.unknown
-    new(rand(0..99999).to_s)
+  def generate_key
+    if @key == 'none'
+      @key = rand(0..99999).to_s
+    end
   end
 
   def create_shift_key
