@@ -5,6 +5,11 @@ class Offset
     @date = date
   end
 
+  def self.unknown
+    date = Date::today
+    new(date.strftime('%d%m%y'))
+  end
+
   def translate_date
     date_shift = (@date.to_i ** 2).to_s
   end
