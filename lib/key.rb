@@ -14,10 +14,10 @@ class Key
     4.times do |acc|
       output << @key[acc] + @key[acc + 1]
     end
-    convert_to_integars(output)
+    convert_to_integers(output)
   end
 
-  def convert_to_integars(shift_key)
+  def convert_to_integers(shift_key)
     shift_key.map do |key|
       key.to_i
     end

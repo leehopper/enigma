@@ -21,11 +21,10 @@ describe Key do
     expect(key.create_shift_key).to eq([01, 12, 23, 34])
   end
 
-  it '.convert_to_integars' do
+  it '.convert_to_integers' do 
     key = Key.new('01234')
-    expected = key.convert_to_integars(['01', '12', '23', '34'])
+    expected = key.convert_to_integers(['01', '12', '23', '34'])
 
     expect(expected).to eq([01, 12, 23, 34])
   end
-
 end
