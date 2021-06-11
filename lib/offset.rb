@@ -19,6 +19,12 @@ class Offset
     4.times do |acc|
       output << translate_date[acc - 4]
     end
-    output
+    convert_to_integers(output)
+  end
+
+  def convert_to_integers(shift_offset)
+    shift_offset.map do |offset|
+      offset.to_i
+    end
   end
 end
