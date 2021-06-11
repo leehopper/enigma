@@ -1,5 +1,5 @@
+require_relative 'spec_helper'
 require_relative '../lib/key'
-require 'rspec'
 
 describe Key do
   it 'exists with given key' do
