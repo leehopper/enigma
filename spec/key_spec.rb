@@ -16,9 +16,16 @@ describe Key do
   end
 
   it 'creates shift key' do
-    known_key = Key.new('01234')
+    key = Key.new('01234')
 
-    expect(known_key.create_shift_key).to eq(['01', '12', '23', '34'])
+    expect(key.create_shift_key).to eq([01, 12, 23, 34])
+  end
+
+  it '.convert_to_integars' do
+    key = Key.new('01234')
+    expected = key.convert_to_integars(['01', '12', '23', '34'])
+
+    expect(expected).to eq([01, 12, 23, 34])
   end
 
 end
