@@ -36,9 +36,16 @@ describe Encryption do
   end
 
   it '.encrypt_text' do
-    encryption = Encryption.new('Lee Jonathon Hopper', '01234', '110621')
+    encryption = Encryption.new('Lee H', '01234', '110621')
     expected = encryption.encrypt_text([6, 18, 0, 8], ['l', 'e', 'e', ' ', 'h'])
 
     expect(expected).to eq(['r', 'w', 'e', 'h', 'n'])
+  end
+
+  it '.format_text' do
+    encryption = Encryption.new('Lee H', '01234', '110621')
+    expected = encryption.format_text(['r', 'w', 'e', 'h', 'n'])
+
+    expect(expected).to eq('rwehn')
   end
 end
