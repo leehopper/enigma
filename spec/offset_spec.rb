@@ -3,7 +3,7 @@ require_relative '../lib/offset'
 
 describe Offset do
   it 'exists' do
-    offset = Offset.new('061121')
+    offset = Offset.new('110621')
 
     expect(offset).to be_a(Offset)
   end
