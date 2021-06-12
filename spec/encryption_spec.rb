@@ -48,4 +48,10 @@ describe Encryption do
 
     expect(expected).to eq('rwehn')
   end
+
+  it '.run_encryption' do
+    encryption = Encryption.new('Lee Jonathon Hopper', '01234', '110621')
+
+    expect(encryption.run_encryption).to eq('rwehpfnizzovfzoxvwr')
+  end
 end
