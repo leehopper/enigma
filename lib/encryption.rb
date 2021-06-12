@@ -3,7 +3,7 @@ require_relative 'offset'
 
 class Encryption
 
-  def initialize (text, key = 'none', date = 'none')
+  def initialize (text, key, date)
     @text = text
     @key = Key.new(key)
     @offset = Offset.new(date)
