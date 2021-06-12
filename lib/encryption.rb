@@ -15,8 +15,7 @@ class Encryption
     shift = reduce_shift(shift)
     split_text = split_and_downcase_text
     encrypted_text = encrypt_text(shift, split_text)
-    output = format_text(encrypted_text)
-    output
+    format_text(encrypted_text)
   end
 
   def create_shift
