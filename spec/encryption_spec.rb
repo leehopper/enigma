@@ -21,9 +21,16 @@ describe Encryption do
     expect(expected).to eq([6, 18, 0, 8])
   end
 
+  it '.split_text' do
+    encryption = Encryption.new('Lee H', '01234', '110621')
+
+    expect(encryption.split_text).to eq(['L', 'e', 'e', ' ', 'H'])
+  end
+
   it '.encrypt_character' do
     encryption = Encryption.new('Lee Jonathon Hopper', '01234', '110621')
 
     expect(encryption.encrypt_character('l', 6)).to eq('r')
+    expect(encryption.encrypt_character('!', 6)).to eq('!')
   end
 end
