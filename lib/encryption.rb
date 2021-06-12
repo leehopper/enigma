@@ -30,8 +30,11 @@ class Encryption
     end
   end
 
-  def split_text
+  def split_and_downcase_text
     @text = @text.split('')
+    @text = @text.map do |char|
+      char.downcase
+    end 
   end
 
   def encrypt_character(char, shift)
