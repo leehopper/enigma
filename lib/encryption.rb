@@ -2,7 +2,6 @@ require_relative 'key'
 require_relative 'offset'
 
 class Encryption
-  attr_reader :text
 
   def initialize (text, key = 'none', date = 'none')
     @text = text
@@ -15,7 +14,8 @@ class Encryption
     shift = reduce_shift(shift)
     split_text = split_and_downcase_text
     encrypted_text = encrypt_text(shift, split_text)
-    format_text(encrypted_text)
+    encrypted_text = format_text(encrypted_text)
+    create_output_hash(encrypted_text)
   end
 
   def create_shift
@@ -34,8 +34,8 @@ class Encryption
   end
 
   def split_and_downcase_text
-    @text = @text.split('')
-    @text = @text.map do |char|
+    temp_text = @text.split('')
+    temp_text.map do |char|
       char.downcase
     end
   end
@@ -60,7 +60,15 @@ class Encryption
     end
   end
 
-  def format_text(encrypted_text)
-    encrypted_text.join('')
+  def format_text(encrypted_array)
+    encrypted_array.join('')
+  end
+
+  def create_output_hash(encrypted_text)
+    {
+      encryption: encrypted_text,
+      key: @key.key,
+      date: @offset.date
+    }
   end
 end
