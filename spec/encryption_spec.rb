@@ -23,9 +23,8 @@ describe Encryption do
 
   it '.split_and_downcase_text' do
     encryption = Encryption.new('Lee H', '01234', '110621')
-    encryption.split_and_downcase_text
 
-    expect(encryption.text).to eq(['l', 'e', 'e', ' ', 'h'])
+    expect(encryption.split_and_downcase_text).to eq(['l', 'e', 'e', ' ', 'h'])
   end
 
   it '.encrypt_character' do
@@ -49,9 +48,24 @@ describe Encryption do
     expect(expected).to eq('rwehn')
   end
 
+  it '.create_output_hash' do
+    encryption = Encryption.new('Lee H', '01234', '110621')
+    expected = encryption.create_output_hash('rwehn')
+    expect(expected).to eq({
+      encryption: 'rwehn',
+      key: '01234',
+      date: '110621'
+      })
+  end
+
   it '.run_encryption' do
     encryption = Encryption.new('Lee Jonathon Hopper', '01234', '110621')
 
-    expect(encryption.run_encryption).to eq('rwehpfnizzovfzoxvwr')
+
+    expect(encryption.run_encryption).to eq({
+      encryption: 'rwehpfnizzovfzoxvwr',
+      key: '01234',
+      date: '110621'
+      })
   end
 end
