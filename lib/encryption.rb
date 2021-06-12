@@ -12,6 +12,7 @@ class Encryption
   def ceo
     shift = create_shift
     shift = reduce_shift(shift)
+    split_text
   end
 
   def create_shift
@@ -27,6 +28,10 @@ class Encryption
       end
       num
     end
+  end
+
+  def split_text
+    @text = @text.split('')
   end
 
   def encrypt_character(char, shift)
