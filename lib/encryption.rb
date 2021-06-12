@@ -2,6 +2,7 @@ require_relative 'key'
 require_relative 'offset'
 
 class Encryption
+  attr_reader :text
 
   def initialize (text, key = 'none', date = 'none')
     @text = text
@@ -12,7 +13,10 @@ class Encryption
   def ceo
     shift = create_shift
     shift = reduce_shift(shift)
-    split_text
+    split_text = split_and_downcase_text
+    encrypted_text = encrypt_text(shift, split_text)
+    # ouput = format_text(encrypted_text)
+    # output
   end
 
   def create_shift
@@ -34,13 +38,24 @@ class Encryption
     @text = @text.split('')
     @text = @text.map do |char|
       char.downcase
-    end 
+    end
+  end
+
+  def encrypt_text(shift, split_text)
+    shifter = shift
+    output = []
+    split_text.each do |char|
+      output << encrypt_character(char, shifter[0])
+      shifter = shifter.rotate(1)
+    end
+    output
   end
 
   def encrypt_character(char, shift)
     alphabet = (('a'..'z').to_a).push(' ')
     if alphabet.include?(char)
-      alphabet[alphabet.find_index(char) + shift]
+      alphabet = alphabet.rotate(alphabet.find_index(char))
+      alphabet[shift]
     else
       char
     end
