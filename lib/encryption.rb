@@ -7,21 +7,34 @@ class Encryption
     @text = text
     @key = Key.new(key)
     @offset = Offset.new(date)
-    @shift = []
   end
 
   def ceo
-    create_shift
-
+    shift = create_shift
+    shift = reduce_shift(shift)
   end
 
   def create_shift
-    acc = 0
-    @shift = []
-    @key.create_shift_key.each do |key|
-      @shift << key + @offset.create_shift_offset[acc]
-      acc += 1
+    @key.create_shift_key.map.with_index do |key, index|
+      key + @offset.create_shift_offset[index]
     end
-    @shift
+  end
+
+  def reduce_shift(shift)
+    shift.map do |num|
+      until num < 27
+        num -= 27
+      end
+      num
+    end
+  end
+
+  def encrypt_character(char, shift)
+    alphabet = (('a'..'z').to_a).push(' ')
+    if alphabet.include?(char)
+      alphabet[alphabet.find_index(char) + shift]
+    else
+      char
+    end
   end
 end
