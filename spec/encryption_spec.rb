@@ -21,10 +21,10 @@ describe Encryption do
     expect(expected).to eq([6, 18, 0, 8])
   end
 
-  it '.split_text' do
+  it '.split_and_downcase_text' do
     encryption = Encryption.new('Lee H', '01234', '110621')
 
-    expect(encryption.split_text).to eq(['L', 'e', 'e', ' ', 'H'])
+    expect(encryption.split_and_downcase_text).to eq(['l', 'e', 'e', ' ', 'h'])
   end
 
   it '.encrypt_character' do
