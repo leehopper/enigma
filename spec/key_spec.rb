@@ -9,10 +9,12 @@ describe Key do
     expect(key.key).to eq('01234')
   end
 
-  it 'creates instance of itself with random key' do
-    rand_key = Key.unknown
+  it '.generate_key' do
+    allow_any_instance_of(Key).to receive(:rand).and_return(1)
+    rand_key = Key.new('none')
 
     expect(rand_key).to be_a(Key)
+    expect(rand_key.key).to eq('11111')
   end
 
   it 'creates shift key' do
@@ -21,7 +23,7 @@ describe Key do
     expect(key.create_shift_key).to eq([01, 12, 23, 34])
   end
 
-  it '.convert_to_integers' do 
+  it '.convert_to_integers' do
     key = Key.new('01234')
     expected = key.convert_to_integers(['01', '12', '23', '34'])
 

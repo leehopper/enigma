@@ -3,7 +3,7 @@ require_relative '../lib/offset'
 
 describe Offset do
   it 'exists' do
-    offset = Offset.new('061121')
+    offset = Offset.new('110621')
 
     expect(offset).to be_a(Offset)
   end
@@ -14,10 +14,12 @@ describe Offset do
     expect(offset.date).to eq('110621')
   end
 
-  it 'creates instance of self without date argument' do
-    no_date_offset = Offset.unknown
+  it '.date_check' do
+    allow(Date).to receive(:today).and_return(Date.new(2021,6,5))
+    no_date_offset = Offset.new('none')
 
     expect(no_date_offset).to be_a(Offset)
+    expect(no_date_offset.date).to eq('050621')
   end
 
   it '.translate_date' do

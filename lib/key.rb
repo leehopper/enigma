@@ -2,11 +2,17 @@ class Key
   attr_reader :key
 
   def initialize(key)
-    @key = key
+    @key = generate_key(key)
   end
 
-  def self.unknown
-    new(rand(0..99999).to_s)
+  def generate_key(key)
+    if key == 'none'
+      5.times.map do
+        rand(10)
+      end.join
+    else
+      key
+    end
   end
 
   def create_shift_key
