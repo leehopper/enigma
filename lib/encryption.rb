@@ -10,12 +10,12 @@ class Encryption
     @offset = Offset.new(date)
   end
 
-  def ceo
+  def run_encryption
     shift = create_shift
     shift = reduce_shift(shift)
     split_text = split_and_downcase_text
     encrypted_text = encrypt_text(shift, split_text)
-    ouput = format_text(encrypted_text)
+    output = format_text(encrypted_text)
     output
   end
 
