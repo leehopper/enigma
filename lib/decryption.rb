@@ -34,6 +34,16 @@ class Decryption
     @text.split('')
   end
 
+  def decrypt_text(shift, text_array)
+    shifter = shift
+    output = []
+    text_array.each do |char|
+      output << decrypt_character(char, shifter[0])
+      shifter = shifter.rotate(1)
+    end
+    output
+  end
+
   def decrypt_character(char, shift)
     alphabet = (('a'..'z').to_a).push(' ')
     if alphabet.include?(char)
