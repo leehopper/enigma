@@ -26,4 +26,11 @@ describe Decryption do
 
     expect(decryption.split_text).to eq(['r', 'w', 'e', 'h', 'p'])
   end
+
+  it '.decrypt_character' do
+    decryption = Decryption.new('rwehp', '01234', '110621')
+
+    expect(decryption.decrypt_character('r', 6)).to eq('l')
+    expect(decryption.decrypt_character('!', 6)).to eq('!')
+  end
 end
