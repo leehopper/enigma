@@ -53,4 +53,16 @@ class Decryption
       char
     end
   end
+
+  def format_text(decrypted_array)
+    decrypted_array.join('')
+  end
+
+  def create_output_hash(decrypted_text)
+    {
+      decryption: decrypted_text,
+      key: @key.key,
+      date: @offset.date
+    }
+  end
 end
