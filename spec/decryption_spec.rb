@@ -57,4 +57,15 @@ describe Decryption do
       date: '110621'
       })
   end
+
+  it '.run_decryption' do
+    decryption = Decryption.new('rwehpfnizzovfzoxvwr', '01234', '110621')
+
+
+    expect(decryption.run_decryption).to eq({
+      decryption: 'lee jonathon hopper',
+      key: '01234',
+      date: '110621'
+      })
+  end
 end
