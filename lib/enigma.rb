@@ -8,7 +8,7 @@ class Enigma
     encription.run_encryption
   end
 
-  def decrypt(text, key, date)
+  def decrypt(text, key, date = 'none')
     decryption = Decryption.new(text, key, date)
     decryption.run_decryption
   end
