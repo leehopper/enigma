@@ -40,4 +40,21 @@ describe Decryption do
     expect(decryption.decrypt_character('r', 6)).to eq('l')
     expect(decryption.decrypt_character('!', 6)).to eq('!')
   end
+
+  it '.format_text' do
+    decryption = Decryption.new('rwehp', '01234', '110621')
+    expected = decryption.format_text(['l', 'e', 'e', ' ', 'j'])
+
+    expect(expected).to eq('lee j')
+  end
+
+  it '.create_output_hash' do
+    decryption = Decryption.new('rwehp', '01234', '110621')
+    expected = decryption.create_output_hash('lee j')
+    expect(expected).to eq({
+      decryption: 'lee j',
+      key: '01234',
+      date: '110621'
+      })
+  end
 end
