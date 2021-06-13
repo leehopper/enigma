@@ -1,4 +1,5 @@
 require_relative '../lib/enigma'
+require_relative 'spec_helper'
 
 describe Enigma do
   it 'exists' do
