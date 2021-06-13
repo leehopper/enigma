@@ -31,6 +31,16 @@ class Decryption
   end
 
   def split_text
-    temp_text = @text.split('')
+    @text.split('')
+  end
+
+  def decrypt_character(char, shift)
+    alphabet = (('a'..'z').to_a).push(' ')
+    if alphabet.include?(char)
+      alphabet = alphabet.rotate(alphabet.find_index(char) + 1)
+      alphabet[-shift - 1]
+    else
+      char
+    end
   end
 end
