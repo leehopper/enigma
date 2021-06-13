@@ -1,5 +1,4 @@
 require_relative 'enigma'
-require 'date'
 
 file = File.open(ARGV[0], "r")
 message = file.read
