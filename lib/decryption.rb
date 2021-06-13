@@ -10,7 +10,7 @@ class Decryption
     shift = create_shift
     shift = reduce_shift(shift)
     text_array = split_text
-    decrypted_text = encrypt_text(shift, text_array)
+    decrypted_text = decrypt_text(shift, text_array)
     decrypted_text = format_text(decrypted_text)
     create_output_hash(decrypted_text)
   end
