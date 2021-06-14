@@ -8,6 +8,7 @@ class Crack
     text_array = split_text
     end_array = create_end_array(text_array)
     shift = create_shift(end_array)
+    shift
   end
 
   def split_text
