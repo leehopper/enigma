@@ -13,4 +13,11 @@ describe Crack do
 
     expect(crack.split_text).to eq(['v', 'j', 'q', 't'])
   end
+
+  it '.create_end_array' do
+    crack = Crack.new('vjqtbeaweqihssi')
+    expected = crack.create_end_array(crack.split_text)
+
+    expect(expected).to eq(['h', 's', 's', 'i'])
+  end
 end
