@@ -53,4 +53,11 @@ describe Crack do
 
     expect(crack.create_shift(['h', 's', 's', 'i'])).to eq([8, 14, 5, 5])
   end
+
+  it '.crack_enigma' do
+    crack = Crack.new('vjqtbeaweqihssi')
+
+    expect(crack.crack_enigma).to eq([8, 14, 5, 5])
+  end
+
 end
