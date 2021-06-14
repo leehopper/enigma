@@ -68,4 +68,10 @@ describe Decryption do
       date: '110621'
       })
   end
+
+  it '.find_shift_key' do
+    decryption = Decryption.with_cracked_shift('vjqtbeaweqihssi', [8, 14, 5, 5])
+
+    expect(decryption.find_key_shift).to eq([3, 8, 1, 4])
+  end
 end
