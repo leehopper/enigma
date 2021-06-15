@@ -1,3 +1,6 @@
+require_relative 'key'
+require_relative 'offset'
+
 class Decryption
 
   def initialize (text, key, date, shift = [])
@@ -7,17 +10,10 @@ class Decryption
     @shift = shift
   end
 
-  def self.with_cracked_shift(text, shift, date = 'none')
-    new(text, 'cracking', date, shift)
-  end
-
   def run_cracked_decryption
     key_shift = find_key_shift
     @key.convert_key_shift(key_shift)
-    text_array = split_text
-    decrypted_text = decrypt_text(text_array)
-    decrypted_text = format_text(decrypted_text)
-    create_output_hash(decrypted_text)
+    run_decryption
   end
 
   def run_decryption
@@ -81,8 +77,14 @@ class Decryption
   end
 
   def find_key_shift
-    @shift.map.with_index do |num, index|
-      num - @offset.create_shift_offset[index]
+    output = []
+    @shift.each.with_index do |num, index|
+      shift = num - @offset.create_shift_offset[index]
+      if shift < 0
+        shift = shift + 27
+      end
+      output << shift
     end
+    output
   end
 end
