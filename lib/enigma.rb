@@ -1,6 +1,6 @@
 require_relative 'encryption'
 require_relative 'decryption'
-require_relative 'crack'
+require_relative 'crack_shift'
 
 class Enigma
 

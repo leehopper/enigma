@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-require_relative '../lib/crack'
+require_relative '../lib/crack_shift'
 
 describe Crack do
   it 'exists' do
