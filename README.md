@@ -1,5 +1,4 @@
-# enigma
-Turing School Module 1 Independent Project
+# Enigma
 
 I believe I met expectations or better in all areas.
 
