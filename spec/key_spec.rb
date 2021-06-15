@@ -44,8 +44,15 @@ describe Key do
 
   it '.find_num' do
     key = Key.new('cracking')
-    
-    expect(key.find_num(03, 8)).to eq(35)
-    # expect(key.find_num(03, 38)).to eq("restart")
+
+    expect(key.find_num('03', '8')).to eq('35')
+    expect(key.find_num('38', '1')).to eq("82")
+    expect(key.find_num('03', '95')).to eq("restart")
+  end
+
+  it '.add_27' do
+    key = Key.new('cracking')
+
+    expect(key.add_27('8')).to eq('35')
   end
 end
