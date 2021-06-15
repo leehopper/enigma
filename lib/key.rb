@@ -35,9 +35,6 @@ class Key
     index3 = key_shift[2].to_s
     index4 = key_shift[3].to_s
     loop do
-      if index1.to_i < 9
-        index1 = '0' + index1
-      end
       test1 = find_num(index1, index2)
       if test1 == "restart"
         reset = true
@@ -61,7 +58,9 @@ class Key
           break
         end
       end
-      if index1.to_i < 73
+      if index1.to_i <= 9
+        index1 = '0' + index1
+      elsif index1.to_i < 73
         index1 = add_27(index1)
       end
       index2 = key_shift[1].to_s
@@ -76,6 +75,9 @@ class Key
     num1 = test1
     num2 = test2
     restart = nil
+    if num2.to_i <= 9
+      num2 = '0' + num2
+    end
     until num1[1] == num2[0]
       num2 = add_27(num2)
       if num2.to_i > 99
