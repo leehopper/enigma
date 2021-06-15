@@ -11,27 +11,29 @@ class Decryption
     new(text, 'cracking', date, shift)
   end
 
+  def run_crack_decryption
+    key_shift = find_key_shift
+    @key.convert_key_shift(key_shift)
+    run_decryption
+  end
+
   def run_decryption
-    shift = create_shift
-    shift = reduce_shift(shift)
+    create_shift
+    reduce_shift
     text_array = split_text
-    decrypted_text = decrypt_text(shift, text_array)
+    decrypted_text = decrypt_text(text_array)
     decrypted_text = format_text(decrypted_text)
     create_output_hash(decrypted_text)
   end
 
-  def run_crack_decryption
-    find_key_shift
-  end
-
   def create_shift
-    @key.create_shift_key.map.with_index do |key, index|
+    @shift = @key.create_shift_key.map.with_index do |key, index|
       key + @offset.create_shift_offset[index]
     end
   end
 
-  def reduce_shift(shift)
-    shift.map do |num|
+  def reduce_shift
+    @shift = @shift.map do |num|
       until num < 27
         num -= 27
       end
@@ -43,8 +45,8 @@ class Decryption
     @text.split('')
   end
 
-  def decrypt_text(shift, text_array)
-    shifter = shift
+  def decrypt_text(text_array)
+    shifter = @shift
     output = []
     text_array.each do |char|
       output << decrypt_character(char, shifter[0])
@@ -53,11 +55,11 @@ class Decryption
     output
   end
 
-  def decrypt_character(char, shift)
+  def decrypt_character(char, shifter)
     alphabet = (('a'..'z').to_a).push(' ')
     if alphabet.include?(char)
       alphabet = alphabet.rotate(alphabet.find_index(char) + 1)
-      alphabet[-shift - 1]
+      alphabet[-shifter - 1]
     else
       char
     end
