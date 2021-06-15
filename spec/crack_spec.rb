@@ -57,7 +57,11 @@ describe Crack do
   it '.crack_enigma' do
     crack = Crack.new('vjqtbeaweqihssi')
 
-    expect(crack.crack_enigma).to eq([8, 14, 5, 5])
+    expect(crack.crack_enigma).to eq([14, 5, 5, 8])
+
+    crack = Crack.new('rwehpfnizzovfzoxvwrhked')
+
+    expect(crack.crack_enigma).to eq([6, 18, 0, 8])
   end
 
 end
