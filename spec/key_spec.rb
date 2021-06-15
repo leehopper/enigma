@@ -29,4 +29,23 @@ describe Key do
 
     expect(expected).to eq([01, 12, 23, 34])
   end
+
+  it '.convert_key_shift' do
+    key = Key.new('cracking')
+    key.convert_key_shift([3, 8, 1, 4])
+
+    expect(key.key).to eq('03558')
+
+    key = Key.new('none')
+    key.convert_key_shift([38, 89, 95, 56])
+
+    expect(key.key).to eq('38956')
+  end
+
+  it '.find_num' do
+    key = Key.new('cracking')
+    
+    expect(key.find_num(03, 8)).to eq(35)
+    # expect(key.find_num(03, 38)).to eq("restart")
+  end
 end
