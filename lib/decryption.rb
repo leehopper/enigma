@@ -79,11 +79,11 @@ class Decryption
   def find_key_shift
     output = []
     @shift.each.with_index do |num, index|
-      shift = num - @offset.create_shift_offset[index]
-      if shift < 0
-        shift = shift + 27
+      key_shift = num - @offset.create_shift_offset[index]
+      if key_shift < 0
+        key_shift = key_shift + 27
       end
-      output << shift
+      output << key_shift
     end
     output
   end

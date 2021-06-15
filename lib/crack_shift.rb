@@ -1,7 +1,7 @@
 class Crack
 
   def initialize(text)
-    @text = text
+    @text = text.chomp
   end
 
   def crack_enigma
