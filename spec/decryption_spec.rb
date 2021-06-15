@@ -73,13 +73,13 @@ describe Decryption do
   end
 
   it '.find_shift_key' do
-    decryption = Decryption.new('vjqtbeaweqihssi', 'none', 'none', [14, 5, 5, 8])
+    decryption = Decryption.new('vjqtbeaweqihssi', 'none', 'none', [5, 8, 14, 5])
 
-    expect(decryption.find_key_shift).to eq([9, 26, 1, 7])
+    expect(decryption.find_key_shift).to eq([0, 2, 10, 4])
   end
 
   it '.run_cracked_decryption' do
-    decryption = Decryption.new('yqprel uhxhfvzh', 'none', 'none', [17, 12, 4, 6])
+    decryption = Decryption.new('yqprel uhxhfvzh', 'none', '140621', [17, 12, 4, 6])
 
     expect(decryption.run_cracked_decryption).to eq({
       :date=>"140621",
@@ -87,7 +87,7 @@ describe Decryption do
       :key=>"66005"
       })
 
-    decryption = Decryption.new('rwehpfnizzovfzoxvwrhked', 'none', 'none', [6, 18, 0, 8])
+    decryption = Decryption.new('rwehpfnizzovfzoxvwrhked', 'none', '140621', [6, 18, 0, 8])
 
     expect(decryption.run_cracked_decryption).to eq({
       :date=>"140621",
