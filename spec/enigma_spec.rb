@@ -29,4 +29,27 @@ describe Enigma do
       date: "040895"
       })
   end
+
+  it '.crack' do
+    enigma = Enigma.new
+
+    test = enigma.crack("askfhnvikzcuyac", "140621")
+    expected = {
+      :date=>"140621",
+      :decryption=>"hello world end",
+      :key=>"66005"
+      }
+
+    enigma = Enigma.new
+
+    test = enigma.crack("zobrfjmuijqken", "150621")
+    expected = {
+      :date=>"150621",
+      :decryption=>"hello wor  end",
+      :key=>"13132"
+      }
+
+      
+  end
+
 end
