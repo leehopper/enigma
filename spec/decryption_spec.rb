@@ -78,9 +78,17 @@ describe Decryption do
     expect(decryption.find_key_shift).to eq([3, 8, 1, 4])
   end
 
-  it '.run_crack_decryption' do
-    decryption = Decryption.with_cracked_shift('vjqtbeaweqihssi', [8, 14, 5, 5])
+  it '.run_cracked_decryption' do
+    decryption = Decryption.with_cracked_shift('vjqtbeaweqihssi', [14, 5, 5, 8])
 
-    expect(decryption.run_crack_decryption).to eq(0)
+    expect(decryption.run_cracked_decryption).to eq(0)
+
+    decryption = Decryption.with_cracked_shift('rwehpfnizzovfzoxvwrhked', [6, 18, 0, 8])
+
+    expect(decryption.run_cracked_decryption).to eq({
+      :date=>"140621",
+      :decryption=>"lee jonathon hopper end",
+      :key=>"01234"
+      })
   end
 end
