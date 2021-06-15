@@ -28,7 +28,7 @@ class Crack
   end
 
   def create_shift(end_array)
-    end_array.map.with_index do |char, count|
+    test = end_array.map.with_index do |char, count|
       find_index_shift(char, count)
     end
   end
@@ -54,15 +54,15 @@ class Crack
 
   def rotate_shift(split_array, shift)
     length = split_array.length
-    shift_index = length - 2
+    shift_index = length - 3
     if shift_index % 4 == 0
-      index = 4
-    elsif (shift_index + 1) % 4 == 0
-      index = 3
-    elsif (shift_index + 2) % 4 == 0
-      index = 2
-    elsif (shift_index + 3) % 4 == 0
       index = 1
+    elsif (shift_index + 1) % 4 == 0
+      index = 2
+    elsif (shift_index + 2) % 4 == 0
+      index = 3
+    elsif (shift_index + 3) % 4 == 0
+      index = 4
     end
     shift.rotate(index)
   end
