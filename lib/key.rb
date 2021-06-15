@@ -2,7 +2,7 @@ class Key
   attr_reader :key
 
   def initialize(key)
-    @key = generate_key(key)
+    @key = generate_key(key) # use || statement and nil instead of 'none'
   end
 
   def generate_key(key)

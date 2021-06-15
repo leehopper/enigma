@@ -24,7 +24,7 @@ class Encryption
     end
   end
 
-  def reduce_shift(shift)
+  def reduce_shift(shift) # could use % of 27 to get the remainder
     shift.map do |num|
       until num < 27
         num -= 27
@@ -34,7 +34,7 @@ class Encryption
   end
 
   def split_and_downcase_text
-    temp_text = @text.split('')
+    temp_text = @text.split('') #.chars
     temp_text.map do |char|
       char.downcase
     end
@@ -49,7 +49,7 @@ class Encryption
     end
     output
   end
-
+# for module turn variance between encrypt and decrypt into parameter 
   def encrypt_character(char, shift)
     alphabet = (('a'..'z').to_a).push(' ')
     if alphabet.include?(char)
