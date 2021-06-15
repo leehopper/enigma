@@ -64,4 +64,30 @@ describe Crack do
     expect(crack.crack_enigma).to eq([6, 18, 0, 8])
   end
 
+  it '.rotate_shift' do
+    crack = Crack.new('vjqtbeaweqihssi')
+    split_array = ['v', 'j', 'q', 't', 'g']
+    shift = ['1', '2', '3', '4']
+    expected = ['4', '1', '2', '3']
+
+    expect(crack.rotate_shift(split_array, shift)).to eq(expected)
+
+    split_array = ['l', 'v', 'j', 'q', 't', 'g']
+    shift = ['1', '2', '3', '4']
+    expected = ['3', '4', '1', '2']
+
+    expect(crack.rotate_shift(split_array, shift)).to eq(expected)
+
+    split_array = ['e', 'l', 'v', 'j', 'q', 't', 'g']
+    shift = ['1', '2', '3', '4']
+    expected = ['2', '3', '4', '1']
+
+    expect(crack.rotate_shift(split_array, shift)).to eq(expected)
+
+    split_array = ['g', 'e', 'l', 'v', 'j', 'q', 't', 'g']
+    shift = ['1', '2', '3', '4']
+    expected = ['1', '2', '3', '4']
+
+    expect(crack.rotate_shift(split_array, shift)).to eq(expected)
+  end
 end
