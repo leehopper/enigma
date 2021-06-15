@@ -11,10 +11,13 @@ class Decryption
     new(text, 'cracking', date, shift)
   end
 
-  def run_crack_decryption
+  def run_cracked_decryption
     key_shift = find_key_shift
     @key.convert_key_shift(key_shift)
-    run_decryption
+    text_array = split_text
+    decrypted_text = decrypt_text(text_array)
+    decrypted_text = format_text(decrypted_text)
+    create_output_hash(decrypted_text)
   end
 
   def run_decryption
